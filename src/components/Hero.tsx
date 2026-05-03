@@ -114,16 +114,16 @@ export default function Hero() {
             Movies · TV Series · Live Sports · 4K Quality — all in one place. No buffering. No limits.
           </p>
 
-          <div className="fade-up-5 flex items-center justify-center gap-8 sm:gap-12 mb-10">
+          <div className="fade-up-5 flex items-center justify-center gap-2 sm:gap-8 lg:gap-12 mb-10">
             {STATS.map((stat, i) => (
-              <div key={i} className="flex items-center gap-8">
-                {i > 0 && <div className="w-px h-10 bg-slate-200" />}
+              <div key={i} className="flex items-center gap-2 sm:gap-8">
+                {i > 0 && <div className="w-px h-8 sm:h-10 bg-slate-200" />}
                 <div className="text-center">
-                  <div className="text-3xl sm:text-4xl font-black text-slate-900 leading-none">
+                  <div className="text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-none">
                     {stat.num}
                     <span className="text-blue-600">{stat.suffix}</span>
                   </div>
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-slate-400 mt-1">{stat.label}</div>
+                  <div className="text-[8px] sm:text-[10px] uppercase tracking-[0.18em] text-slate-400 mt-1">{stat.label}</div>
                 </div>
               </div>
             ))}
