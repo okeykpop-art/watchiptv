@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import OrderButton from "./OrderButton";
+import { FALLBACK_MATCHES } from "@/lib/football";
 
 const STATS = [
   { num: "24", suffix: "K+", label: "Channels" },
@@ -40,57 +41,48 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center overflow-hidden bg-white" style={{ minHeight: "85vh" }}>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white" style={{ minHeight: "85vh" }}>
 
-      <svg width="0" height="0" className="absolute">
-        <filter id="gooey">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="22" result="blur" />
-          <feColorMatrix
-            in="blur"
-            mode="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -10"
-          />
-        </filter>
-      </svg>
+      {/* Blurred Match Cards Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="flex gap-4 animate-marquee-slow w-max py-1 opacity-30 blur-md" style={{ animationDuration: "80s" }}>
+          {[...FALLBACK_MATCHES, ...FALLBACK_MATCHES, ...FALLBACK_MATCHES].map((match, i) => (
+            <div key={match.id + "-" + i} className="flex-shrink-0 w-60 sm:w-64 rounded-2xl border-2 border-blue-200 bg-white p-5">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1 rounded-full" style={{ backgroundColor: match.leagueColor }}>
+                  {match.league}
+                </span>
+              </div>
+              <div className="flex items-center justify-between gap-3 mb-3">
+                <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0">
+                  <div className="h-8 w-8 rounded-full bg-slate-100" />
+                  <span className="text-[10px] font-semibold text-slate-900 text-center truncate w-full">{match.homeTeam}</span>
+                </div>
+                <span className="text-xs font-black text-blue-600 uppercase tracking-widest">VS</span>
+                <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0">
+                  <div className="h-8 w-8 rounded-full bg-slate-100" />
+                  <span className="text-[10px] font-semibold text-slate-900 text-center truncate w-full">{match.awayTeam}</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-center gap-2 text-[9px] text-slate-400 pt-2 border-t border-slate-100">
+                <span>{match.date}</span>
+                <span>·</span>
+                <span>{match.time}</span>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      <div className="absolute inset-0 pointer-events-none" style={{ filter: "url(#gooey)" }}>
+        {/* Fish-eye / Vignette overlay */}
         <div
-          className="absolute rounded-full bg-blue-600"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            width: 300,
-            height: 300,
-            opacity: 0.5,
-            animation: "goo-move-1 20s infinite alternate ease-in-out",
-          }}
-        />
-        <div
-          className="absolute rounded-full bg-blue-400"
-          style={{
-            width: 300,
-            height: 300,
-            opacity: 0.5,
-            animation: "goo-move-2 25s infinite alternate ease-in-out",
-          }}
-        />
-        <div
-          className="absolute rounded-full bg-white"
-          style={{
-            width: 300,
-            height: 300,
-            opacity: 0.5,
-            animation: "goo-move-3 30s infinite alternate ease-in-out",
+            background: "radial-gradient(ellipse at center, rgba(255,255,255,0.95) 30%, rgba(255,255,255,0.7) 55%, rgba(255,255,255,0.3) 75%, transparent 100%)",
           }}
         />
       </div>
 
-      {/* Gradient veil — smooths blobs across the full viewport */}
-      <div
-        className="absolute inset-0 pointer-events-none z-[5]"
-        style={{
-          background: "radial-gradient(ellipse at center, rgba(255,255,255,0.4) 25%, rgba(255,255,255,0.2) 50%, transparent 80%)",
-        }}
-      />
-
+      {/* Content */}
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 lg:pt-32 pb-12 lg:pb-16 z-10">
         <div className="w-full text-center">
           <div className="fade-up-1 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-blue-600 mb-6">
