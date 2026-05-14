@@ -45,9 +45,9 @@ export default function Hero() {
 
       {/* Blurred Match Cards Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="flex gap-4 animate-marquee-slow w-max py-1 opacity-30 blur-md" style={{ animationDuration: "80s" }}>
+        <div className="flex gap-4 animate-marquee-slow w-max py-1" style={{ opacity: 0.4, filter: "blur(4px)", animationDuration: "80s" }}>
           {[...FALLBACK_MATCHES, ...FALLBACK_MATCHES, ...FALLBACK_MATCHES].map((match, i) => (
-            <div key={match.id + "-" + i} className="flex-shrink-0 w-60 sm:w-64 rounded-2xl border-2 border-blue-200 bg-white p-5">
+            <div key={match.id + "-" + i} className="flex-shrink-0 w-60 sm:w-64 rounded-2xl border-2 border-blue-200 bg-white/80 p-5">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1 rounded-full" style={{ backgroundColor: match.leagueColor }}>
                   {match.league}
@@ -77,7 +77,7 @@ export default function Hero() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse at center, rgba(255,255,255,0.95) 30%, rgba(255,255,255,0.7) 55%, rgba(255,255,255,0.3) 75%, transparent 100%)",
+            background: "radial-gradient(ellipse at center, rgba(255,255,255,0.85) 25%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.2) 75%, transparent 100%)",
           }}
         />
       </div>
