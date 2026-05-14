@@ -43,41 +43,41 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white" style={{ minHeight: "85vh" }}>
 
-      {/* Blurred Match Cards Background */}
+      {/* Match Cards Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="flex gap-4 animate-marquee-slow w-max py-1" style={{ opacity: 0.4, filter: "blur(4px)", animationDuration: "80s" }}>
+        <div className="flex gap-4 animate-marquee-slow w-max py-1" style={{ filter: "blur(4px)", animationDuration: "60s" }}>
           {[...FALLBACK_MATCHES, ...FALLBACK_MATCHES, ...FALLBACK_MATCHES].map((match, i) => (
-            <div key={match.id + "-" + i} className="flex-shrink-0 w-60 sm:w-64 rounded-2xl border-2 border-blue-200 bg-white/80 p-5">
-              <div className="flex items-center justify-between mb-3">
+            <div key={match.id + "-" + i} className="flex-shrink-0 w-60 sm:w-64 rounded-2xl border-2 border-blue-200 bg-white p-5 sm:p-6">
+              <div className="flex items-center justify-between mb-4">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1 rounded-full" style={{ backgroundColor: match.leagueColor }}>
                   {match.league}
                 </span>
               </div>
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0">
-                  <div className="h-8 w-8 rounded-full bg-slate-100" />
-                  <span className="text-[10px] font-semibold text-slate-900 text-center truncate w-full">{match.homeTeam}</span>
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <div className="flex flex-col items-center gap-2 flex-1 min-w-0">
+                  <img src={match.homeCrest} alt="" className="h-10 w-10 sm:h-12 sm:w-12 object-contain" loading="lazy" />
+                  <span className="text-xs sm:text-sm font-semibold text-slate-900 text-center truncate w-full">{match.homeTeam}</span>
                 </div>
-                <span className="text-xs font-black text-blue-600 uppercase tracking-widest">VS</span>
-                <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0">
-                  <div className="h-8 w-8 rounded-full bg-slate-100" />
-                  <span className="text-[10px] font-semibold text-slate-900 text-center truncate w-full">{match.awayTeam}</span>
+                <span className="text-lg font-black text-blue-600 uppercase tracking-widest">VS</span>
+                <div className="flex flex-col items-center gap-2 flex-1 min-w-0">
+                  <img src={match.awayCrest} alt="" className="h-10 w-10 sm:h-12 sm:w-12 object-contain" loading="lazy" />
+                  <span className="text-xs sm:text-sm font-semibold text-slate-900 text-center truncate w-full">{match.awayTeam}</span>
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-2 text-[9px] text-slate-400 pt-2 border-t border-slate-100">
-                <span>{match.date}</span>
+              <div className="flex items-center justify-center gap-3 text-xs text-slate-400 pt-3 border-t border-slate-100">
+                <span className="text-blue-600">📅</span> {match.date}
                 <span>·</span>
-                <span>{match.time}</span>
+                <span className="text-blue-600">🕐</span> {match.time}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Fish-eye / Vignette overlay */}
+        {/* Dark vignette frame */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse at center, rgba(255,255,255,0.85) 25%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.2) 75%, transparent 100%)",
+            background: "radial-gradient(ellipse at center, transparent 30%, rgba(255,255,255,0.4) 55%, rgba(255,255,255,0.7) 75%, rgba(255,255,255,0.95) 100%)",
           }}
         />
       </div>
