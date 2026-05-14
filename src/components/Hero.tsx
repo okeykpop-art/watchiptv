@@ -47,7 +47,7 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="flex gap-4 animate-marquee-slow w-max py-1" style={{ filter: "blur(4px)", animationDuration: "60s" }}>
           {[...FALLBACK_MATCHES, ...FALLBACK_MATCHES, ...FALLBACK_MATCHES].map((match, i) => (
-            <div key={match.id + "-" + i} className="flex-shrink-0 w-60 sm:w-64 rounded-2xl border-2 border-blue-200 bg-white p-5 sm:p-6">
+            <div key={match.id + "-" + i} className="flex-shrink-0 w-[45rem] sm:w-[48rem] rounded-2xl border-2 border-blue-200 bg-white p-5 sm:p-6">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1 rounded-full" style={{ backgroundColor: match.leagueColor }}>
                   {match.league}
